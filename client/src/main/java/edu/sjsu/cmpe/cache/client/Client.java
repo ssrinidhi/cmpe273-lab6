@@ -23,11 +23,13 @@ public class Client {
         {
             int bucket = Hashing.consistentHash(Hashing.md5().hashString(Integer.toString(key)), listOfServers.size());
             listOfServers.get(bucket).put(key, val[key]);
+            System.out.println(" PUT value - " + val[key] + " having KEY - " + key + " to SERVER - " + bucket);
         }
 
         for(int key=1; key<10; key++) 
         {
             int bucket = Hashing.consistentHash(Hashing.md5().hashString(Integer.toString(key)), listOfServers.size());
+            System.out.println(" GET value - " + listOfServers.get(bucket).get(key) + " having KEY - " + key+ " from SERVER - "+ bucket); 
         }
 
         System.out.println(" !!<---  HASHING Done. exit--->!!"); 
